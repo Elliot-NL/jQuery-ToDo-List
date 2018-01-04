@@ -1,0 +1,31 @@
+<html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8" />
+        <title>ToDoList</title>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <link rel="stylesheet" type = "text/css" href="ToDocss.css">
+  </head>
+<body link="white">
+    <h1>To-Do List</h1>
+    <input type="text" placeholder="New Item"/>
+    <button id = "add">Add</button>
+    <ol id = "mylist"></ol>
+</body>
+<script>
+$(function() {
+    $("#add").on("click", function() {
+        var val = $("input").val();
+        if(val !== '') {
+            var elem = $("<li></li>").text(val);
+            $(elem).append("<button class='rem'>X</button>");
+            $("#mylist").append(elem);
+            $("input").val("");
+            $(".rem").on("click", function() {
+                $(this).parent().remove();
+            });
+        }
+    });
+});
+</script>
+</html>
